@@ -36,6 +36,30 @@ services:
     volumes:
       - redisdata:/data
 
+  prometheus:
+    image: prom/prometheus:v2.49.1
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - promdata:/prometheus
+    ports:
+      - "9090:9090"
+    depends_on:
+      - bot
+
+  grafana:
+    image: grafana/grafana:10.3.1
+    volumes:
+      - ./monitoring/grafana/datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml:ro
+      - grafanadata:/var/lib/grafana
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:-admin}
+    depends_on:
+      - prometheus
+
 volumes:
   pgdata:
   redisdata:
+  promdata:
+  grafanadata:
