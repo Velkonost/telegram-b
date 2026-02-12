@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "telegram-b",
+    "slug": "telegram-b",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "telegram-b",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.velkonost.telegramb"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.velkonost.telegramb"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    },
+    "plugins": [
+      "expo-router"
+    ]
+  }
+}
